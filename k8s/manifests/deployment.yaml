@@ -15,8 +15,10 @@ spec:
       labels:
         app: go-web-app
     spec:
+      imagePullSecrets:
+      - name: dockerhub-secret  # ✅ Add this to use the Docker Hub secret
       containers:
       - name: go-web-app
-        image: <docker-user-name>/go-web-app
+        image: rawat756095/go-web-app:v1
         ports:
         - containerPort: 8080
