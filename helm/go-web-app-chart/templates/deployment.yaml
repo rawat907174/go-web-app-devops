@@ -1,4 +1,3 @@
-# This is a sample deployment manifest file for a simple web application.
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,6 +14,8 @@ spec:
       labels:
         app: go-web-app
     spec:
+      imagePullSecrets:                   # 🔹 Add this section
+        - name: dockerhub-secret          # 🔹 Ensure this matches the secret you created
       containers:
       - name: go-web-app
         image: rawat756095/go-web-app:{{ .Values.image.tag }}
